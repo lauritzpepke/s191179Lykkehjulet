@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/WordList">
+
+    <fragment
+        android:id="@+id/WordList"
+        android:name="com.example.s191179lykkehjulet.fragments.WordList"
+        android:label="fragment_wordguessing"
+        tools:layout="@layout/fragment_wordlist" >
+        <action
+            android:id="@+id/action_WordList_to_gameWon"
+            app:destination="@id/gameWon" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameWon"
+        android:name="com.example.s191179lykkehjulet.fragments.GameWon"
+        android:label="fragment_game_won"
+        tools:layout="@layout/fragment_game_won" />
+    <fragment
+        android:id="@+id/gameLost"
+        android:name="com.example.s191179lykkehjulet.fragments.GameLost"
+        android:label="fragment_game_lost"
+        tools:layout="@layout/fragment_game_lost" />
+</navigation>
