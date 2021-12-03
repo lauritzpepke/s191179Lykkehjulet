@@ -1,10 +1,59 @@
 <resources>
     <string name="app_name">s191179 Lykkehjulet</string>
 
-    <string name="category1">1</string>
-    <string name="category2">2</string>
-    <string name="category3">3</string>
-    <string name="category4">4</string>
-    <string name="category5">5</string>
+    <string name="category1">Sportsgrene</string>
+    <string name="category2">Instrumenter</string>
+    <string name="category3">Historie</string>
+    <string name="category4">Lande</string>
+    <string name="category5">Dyr</string>
 
+    <string name="score">Score: %d</string>
+    <string name="lives">Liv: %d</string>
+    <string name="guessletter">Gæt et bogstav!</string>
+    <string name="category">%d</string>
+
+    <string name="rule1">1. Spillet er for en enkelt spiller</string>
+    <string name="rule2">2. Når spillet starter bliver et tilfældigt ord fra den valgte kategori vist</string>
+    <string name="rule3">3. Ordet bliver vist med skjulte bogstaver</string>
+    <string name="rule4">4. Spilleren "drejer hjulet" og tager en tur</string>
+    <string name="rule5">5. Ved at dreje hjulet kan følengde ting ske: spilleren får 1000 points, spilleren får et ekstra liv, spilleren mister et live, eller går bankerot</string>
+    <string name="rule6">6. Spilleren vælger et bogstav. Hvis bogstavet er tilstede i ordet, får spilleren point.</string>
+    <string name="rule7">7. På "ekstra liv" får spilleren et ekstra liv</string>
+    <string name="rule8">8. På "mistet liv" mister spilleren et liv</string>
+    <string name="rule9">9. På "bankerot" går spilleren bankerot og mister alle liv</string>
+    <string name="rule10">10. Spilleren tager tur, indtil spillet er vundet eller tabt</string>
+    <string name="rule11">11. Spillet er vundet når alle bogstaver er gættet rigtigt</string>
+    <string name="rule12">12. Spillet er tabt når spilleren er løbet tør for liv</string>
+    <string name="rule13">13. Spilleren starter med 5 liv</string>
+
+
+    <string-array name="Sportsgrene">
+        <item>Fodbold</item>
+        <item>Golf</item>
+        <item>Tennis</item>
+    </string-array>
+
+    <string-array name="Instrumenter">
+        <item>Guitar</item>
+        <item>Piano</item>
+        <item>Kazoo</item>
+    </string-array>
+
+    <string-array name="Historie">
+        <item>Caesar</item>
+        <item>Alexander</item>
+        <item>Genkhis</item>
+    </string-array>
+
+    <string-array name="Lande">
+        <item>Danmark</item>
+        <item>USA</item>
+        <item>Frankrig</item>
+    </string-array>
+
+    <string-array name="Dyr">
+        <item>Ko</item>
+        <item>Fisk</item>
+        <item>Kat</item>
+    </string-array>
 </resources>

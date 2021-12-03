@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_game_end.xml" value="0.31567028985507245" />
         <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_game_lost.xml" value="0.27898550724637683" />
         <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_game_won.xml" value="0.27898550724637683" />
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_start_game.xml" value="0.25" />
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_wordgame.xml" value="0.33" />
         <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_wordguessing.xml" value="0.22" />
-        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_wordlist.xml" value="0.2" />
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/fragment_wordlist.xml" value="0.22" />
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/item_view.xml" value="0.32653985507246375" />
         <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/list_item.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Lauritz/StudioProjects/s191179Lykkehjulet/app/src/main/res/layout/rules_view.xml" value="0.20572916666666666" />
       </map>
     </option>
   </component>

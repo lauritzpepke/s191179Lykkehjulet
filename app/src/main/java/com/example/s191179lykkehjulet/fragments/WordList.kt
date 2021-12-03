@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.s191179lykkehjulet.R
-import com.example.s191179lykkehjulet.adapter.ItemAdapter
+import com.example.s191179lykkehjulet.adapter.CategoryAdapter
 import com.example.s191179lykkehjulet.databinding.FragmentWordlistBinding
 
 
@@ -25,6 +25,7 @@ class WordList : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    //private val viewModel: WordHolder by viewModels()
 
     private lateinit var recyclerView: RecyclerView
     //Keeps track of whick LayoutManager is in use for the [RecyclerView]
@@ -65,29 +66,7 @@ class WordList : Fragment() {
      * the signature of the LayoutManagers has to slightly change.
      */
     private fun chooseLayout() {
-        /*if (isLinearLayoutManager) {
-            recyclerView.layoutManager = LinearLayoutManager(context)
-        } else {
-            recyclerView.layoutManager = GridLayoutManager(context, 4)
-        }*/
-        recyclerView.adapter = ItemAdapter()
+        recyclerView.adapter = CategoryAdapter()
     }
 
-    /*companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment wordguessing.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance() =
-            WordList().apply {
-                arguments = Bundle().apply {
-                }
-            }
-    }*/
 }
