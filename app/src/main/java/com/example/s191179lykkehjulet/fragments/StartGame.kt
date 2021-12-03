@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.s191179lykkehjulet.R
-import com.example.s191179lykkehjulet.adapter.CategoryAdapter
 import com.example.s191179lykkehjulet.adapter.RulesAdapter
 import com.example.s191179lykkehjulet.databinding.FragmentStartGameBinding
 
 
-
+/**
+ * Source: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-3
+ * used for inspiration
+ */
 /**
  * A simple [Fragment] subclass.
  * Use the [StartGame.newInstance] factory method to

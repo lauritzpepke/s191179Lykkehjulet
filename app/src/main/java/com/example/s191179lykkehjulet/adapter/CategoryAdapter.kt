@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.s191179lykkehjulet.R
-import com.example.s191179lykkehjulet.data.GameViewModel
 import com.example.s191179lykkehjulet.fragments.WordListDirections
 import com.example.s191179lykkehjulet.model.Category
 
 
-
-//MANGLER OPRYDNING
+/**
+ * Source: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-2-pathway-3
+ * used for inspiration
+ */
 /**
  * adapter for RecyclerView i Mainactivity. Viser category data object
  */
@@ -30,24 +30,21 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolde
         Category(R.string.category5, R.drawable.biology)
     )
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder.
-    // Each data item is just an Affirmation object.
+    //Define button and imageview for item_view
     class CategoryViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val button: Button = view.findViewById(R.id.button_item)
         val imageView: ImageView = view.findViewById(R.id.item_image)
     }
 
     /**
-     * Return the size of your dataset (invoked by the layout manager)
+     * Return the size of your dataset
      */
     override fun getItemCount(): Int {
        return category.size
     }
 
     /**
-     * Create new views (invoked by the layout manager)
+     * Create new views
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val adapterLayout = LayoutInflater
@@ -58,7 +55,7 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolde
     }
 
     /**
-     * Replace the contents of a view (invoked by the layout manager)
+     * Replace the contents of a view
      */
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
 
@@ -69,7 +66,6 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolde
 
         holder.button.setOnClickListener{
 
-            //val categorygame = holder.button.text.toString()
             //navigate to next screen on click of any button
             val action = WordListDirections.actionWordListToFragmentWordGame(holder.button.text.toString())
             holder.view.findNavController().navigate(action)

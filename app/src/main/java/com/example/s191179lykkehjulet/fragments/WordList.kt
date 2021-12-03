@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.s191179lykkehjulet.adapter.CategoryAdapter
 import com.example.s191179lykkehjulet.databinding.FragmentWordlistBinding
 
-
+/**
+ * Source: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-3
+ * used for inspiration
+ */
 /**
  * A simple [Fragment] subclass.
  * Use the [WordList.newInstance] factory method to

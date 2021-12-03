@@ -9,37 +9,24 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.s191179lykkehjulet.R
-import com.example.s191179lykkehjulet.adapter.CategoryAdapter
 import com.example.s191179lykkehjulet.data.GameViewModel
 import com.example.s191179lykkehjulet.databinding.FragmentWordgameBinding
-import com.example.s191179lykkehjulet.model.sportsgrene
+import com.example.s191179lykkehjulet.model.WheelList
 
 
 /**
+ * Source: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-3
+ * used for inspiration
+ */
+
+/**
  * Fragment where the game is played, should contain the game logic
- *
- * A simple [Fragment] subclass.
- * Use the [WordGame.newInstance] factory method to
- * create an instance of this fragment.
  */
 class WordGame : Fragment(R.layout.fragment_wordgame) {
 
     private lateinit var binding: FragmentWordgameBinding
 
-
     private val viewModel: GameViewModel by viewModels()
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    //private val binding get() = _binding!!
-
-    private lateinit var categoryId: String
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
 
 
     override fun onCreateView(
@@ -50,6 +37,7 @@ class WordGame : Fragment(R.layout.fragment_wordgame) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wordgame, container, false)
         return binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,39 +46,30 @@ class WordGame : Fragment(R.layout.fragment_wordgame) {
         //set the viewModel for data binding - this allows the bound layout access
         // to all the data in the viewModel
         binding.gameViewModel = viewModel
-        // Specify the fragment view as the lifecycle owner of the binding.
-        // This is used so that the binding can observe LiveData updates
+        // Puts the fragment view as the lifecycle owner of the binding.
+        // Binding can then observe LiveData
         binding.lifecycleOwner = viewLifecycleOwner
 
 
-
         // Setup a click listener for the "gæt" button
-        //binding.guess.setOnClickListener {onSubmitGuess()}
+        binding.guess.setOnClickListener {
+            onSubmitGuess(view)
+        }
+        binding.spinButton.setOnClickListener {
+            binding.spinResult.setText(WheelList.random())
+        }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("WordGame", "WordGame destroyed!")
-    }
-
-    private fun chooseLayout() {
-        /*if (isLinearLayoutManager) {
-            recyclerView.layoutManager = LinearLayoutManager(context)
-        } else {
-            recyclerView.layoutManager = GridLayoutManager(context, 4)
-        }*/
-        CategoryAdapter()
-    }
-
-    /*private fun onSubmitGuess() {
+    private fun onSubmitGuess(view: View) {
         val playerGuess = binding.guessEditText.text.toString()
 
-        if (viewModel.isPlayerGuessCorrect(playerGuess)) {
+        viewModel.isPlayerGuessCorrect(playerGuess)
+        if (viewModel.gameWon()) {
             setErrorTextField(false)
         } else {
             setErrorTextField(true)
         }
-    }*/
+    }
 
     private fun setErrorTextField(error: Boolean) {
         if (error) {
@@ -101,24 +80,9 @@ class WordGame : Fragment(R.layout.fragment_wordgame) {
             binding.guessEditText.text = null
         }
     }
-    /*var secret: String = ""
 
-    fun getHiddenWord(): String {
-        var currentHiddenWord = sportsgrene.random()
-        val currentHiddenWordArray = Array(currentHiddenWord.length) {"it = $it"}
-
-
-        for (index in currentHiddenWord.indices)
-            currentHiddenWordArray[index] = "-"
-
-        val HiddenWordToList: String = currentHiddenWordArray.toList().toString()
-            .replace("[", "")
-            .replace("]", "")
-            .replace(",", "")
-        secret = HiddenWordToList
-        return secret
-
-    }*/
-
-
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("WordGame", "WordGame destroyed!")
+    }
 }

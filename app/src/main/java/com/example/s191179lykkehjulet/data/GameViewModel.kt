@@ -1,18 +1,14 @@
 package com.example.s191179lykkehjulet.data
 
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.TtsSpan
 import android.util.Log
-import android.widget.Button
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.example.s191179lykkehjulet.R
-import com.example.s191179lykkehjulet.adapter.CategoryAdapter
-import com.example.s191179lykkehjulet.model.Category
-import com.example.s191179lykkehjulet.model.sportsgrene
+import com.example.s191179lykkehjulet.model.*
+
+
+/**
+ * Source: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-3
+ * used for inspiration
+ */
 
 /**
  * ViewModel containing the app data and methods to process the data
@@ -23,60 +19,115 @@ class GameViewModel : ViewModel() {
         Log.d("WordGame", "GameViewModel created!")
     }
 
-    private val _score = MutableLiveData(0)
-    val score: LiveData<Int>
+    var _score = 0
+    val score: Int
         get() = _score
 
-    private val _lives = MutableLiveData(0)
-    val lives: LiveData<Int>
+    var _lives = 5
+    val lives: Int
         get() = _lives
 
+    //Not implemented
+    //val currentHiddenWord = listCategory
 
-
-
-    private val _currentHiddenWord = MutableLiveData<String>()
-
-    var secret: String = ""
-
-
-
+    //Just to show a word quickly - doesnt actually work
+    val currentHiddenWord = sportsgrene.random()
+    val currentHiddenWordToList = currentHiddenWord.toList()
 
 
     private var PlayerGuessesList: MutableList<String> = mutableListOf()
-    private lateinit var currentWord: String
+    lateinit var listCategory: List<String>
+    lateinit var CurrentWord: String
+    lateinit var currentWordList: MutableList<String>
+    var CorrectPlayerGuesses: MutableList<String> = arrayListOf()
 
-    val currentHiddenWord = sportsgrene.random()
+
+    // not implemented
+    private fun getNextWord(): String {
+        CurrentWord = currentHiddenWord
+        val hiddenLetters = HideLettersInWord()
+
+        var items = ""
+        for (item in hiddenLetters) {
+            items += item
+        }
+        return items
+    }
+
+    // Hides the letters in word
+    fun HideLettersInWord(): MutableList<String> {
+        var hideCurrentWordList = ""
+        for (index in 0..currentHiddenWordToList.size - 1) {
+            if (!currentHiddenWordToList.get(index).equals(" ")) {
+                hideCurrentWordList += "*"
+            }
+        }
+        return hideCurrentWordList.split(" ").toMutableList()
+    }
+
+    //not implemented
+    fun CheckLetter() {
+        TODO()
+    }
 
 
 
-
-    /*
-     * Updates currentWord and currentHiddenWord with the next word
-     * lacks proper logic so that not only sportsgrene is chosen
-     */
-
-    //private fun getNextWord() {
-        //currentWord = sportsgrene.random()
-        //val tempWord = currentWord.toCharArray()
-
-    //}
-
-    fun reinitializeData() {
-        _score.value = 0
+    fun restartData() {
+        _score == 0
         PlayerGuessesList.clear()
         //getNextWord()
     }
 
     private fun increaseScore() {
-        _score.value = _score.value?.plus(10)
+        _score += 1000
     }
 
-    fun isPlayerGuessCorrect(playerGuess: String): Boolean {
-        if (playerGuess.equals(currentHiddenWord.toString(), true)) {
+    private fun addLife() {
+        _lives += 1
+    }
+
+    private fun subtractLife() {
+        _lives -= 1
+    }
+
+    private fun bankruptcy() {
+        _lives == 0
+    }
+
+
+    fun isPlayerGuessCorrect(playerGuess: String) {
+        if (playerGuess in CorrectPlayerGuesses) {
+            CorrectPlayerGuesses.add(playerGuess)
             increaseScore()
-            return true
+        } else subtractLife()
+    }
+
+    fun WheelOutcomes(outcome: String): String {
+        val randomWheel = WheelList.random()
+
+        when (outcome) {
+            "ekstra liv" -> {addLife()}
+            "mistet liv" -> {subtractLife()}
+            "bankerot" -> {bankruptcy()}
+            //"1000 point" -> {increaseScore()}
         }
+        return randomWheel
+    }
+
+    fun getWord(category: String) {
+        when(category) {
+            "Sportsgrene" -> {listCategory = sportsgrene}
+            "Instrumenter" -> {listCategory = instrumenter}
+            "Historie" -> {listCategory = historie}
+            "Lande" -> {listCategory = lande}
+            "Dyr" -> {listCategory = dyr}
+        }
+    }
+
+    fun gameWon(): Boolean {
+        if (CorrectPlayerGuesses.containsAll(currentWordList)) {
+            return true
+       }
         return false
     }
-
 }
